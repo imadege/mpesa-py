@@ -78,7 +78,7 @@ class MpesaExpress(MpesaBase):
 
         time = str(datetime.datetime.now()).split(".")[0].replace("-", "").replace(" ", "").replace(":", "")
         password = "{0}{1}{2}".format(str(business_shortcode), str(passcode), time)
-        encoded = base64.b64encode(password)
+        encoded = base64.b64encode(password.encode('UTF-8'))
         payload = {
             "BusinessShortCode": business_shortcode,
             "Password": encoded,
